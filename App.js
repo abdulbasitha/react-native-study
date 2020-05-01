@@ -7,23 +7,33 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from "react-native";
+import CounterApp from './src/CounterApp';
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+const initialState ={
+  counter:0
+}
+const raducer = (state=initialState,action)=>{
+      switch(action.type){
+        case 'INCREASE_COUNTER':
+              return {counter:state.counter+1}
+        case 'DECREASE_COUNTER':
+              return {counter:state.counter-1}
+      }
+      return state
+    }
 
+const store = createStore(raducer)
 class App extends Component {
+
   render() {
     return (
-      <View style={styles.container}>
-        <View style={{flexDirection:"row",width:200,justifyContent:"space-around"}}>
-          <TouchableOpacity>
-           <Text style={{fontSize:20}}>INC</Text>
-          </TouchableOpacity>
-          <Text style={{fontSize:20}}>0</Text>
-          <TouchableOpacity>
-           <Text style={{fontSize:20}}>DESC</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Provider store={store}>
+         <CounterApp />
+     </Provider>
     );
   }
 }
