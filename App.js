@@ -16,11 +16,11 @@ class App extends Component {
       <View style={styles.container}>
         <View style={{flexDirection:"row",width:200,justifyContent:"space-around"}}>
           <TouchableOpacity>
-           <Text style>INC</Text>
+           <Text style={{fontSize:20}}>INC</Text>
           </TouchableOpacity>
-          <Text style>0</Text>
+          <Text style={{fontSize:20}}>0</Text>
           <TouchableOpacity>
-           <Text style>DESC</Text>
+           <Text style={{fontSize:20}}>DESC</Text>
           </TouchableOpacity>
         </View>
       </View>
